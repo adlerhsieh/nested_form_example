@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th style="width:200px;">事件</th>
-      <th style="width:200px;">日期</th>
+      <th style="width:200px;">待辦事項數量</th>
       <th></th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
     <% @events.each do |event| %>
       <tr class="admin">
         <td><%=link_to event.title, event_path(event) %></td>
-        <td><%= event.date %></td>
+        <td><%= event.tasks.count %></td>
         <td><%= link_to '刪除', event, method: :delete, data: { confirm: '確定嗎？' }, :class => "delete" %></td>
       </tr>
     <% end %>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path, :class => "button", :style => "color: white" %>
+<%= link_to '新增事件', new_event_path, :class => "button", :style => "color: white" %>

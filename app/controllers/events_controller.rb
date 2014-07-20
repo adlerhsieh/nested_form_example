@@ -10,15 +10,20 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = Event.find(params[:id])
+    @task = @event.tasks.all
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    @task = @event.tasks.build
   end
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
+    @task = @event.tasks.new
   end
 
   # POST /events
@@ -69,6 +74,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :content, :date)
+      params.require(:event).permit(:title, :content, :date, :tasks_attributes => [:content, :due, :_destroy])
     end
 end

@@ -1,19 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h3><%= @event.title %></h3>
+<p><strong>內容:</strong><%= @event.content %></p>
+<p><strong>日期:</strong><%= @event.date %></p>
+<hr/>
 
-<p>
-  <strong>事件:</strong>
-  <%= @event.title %>
-</p>
+<% i = 1 %>
+<% @task.each do |t| %>
+	<div class="admin">
+		<h4>待辦事項 <%= i %><span class="delete">&nbsp;<%= link_to "刪除", event_task_path(@event, t), method: :delete, :style => "color: blue" %></span></h4>
+		<p>內容：<%= t.content %></p>
+		<p>截止日期：<%= t.due %></p>
 
-<p>
-  <strong>內容:</strong>
-  <%= @event.content %>
-</p>
+		<% i = i + 1 %>
+	</div>
+<% end %>
 
-<p>
-  <strong>日期:</strong>
-  <%= @event.date %>
-</p>
-
-<%= link_to '編輯', edit_event_path(@event) %> |
-<%= link_to '回到首頁', events_path %>
+<%= link_to '編輯', edit_event_path(@event), :class => "button tiny", :style => "color:white" %>&nbsp;<%= link_to '回到首頁', events_path, :class => "button tiny", :style => "color:white" %>
