@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>事件:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>內容:</strong>
+  <%= @event.content %>
+</p>
+
+<p>
+  <strong>日期:</strong>
+  <%= @event.date %>
+</p>
+
+<%= link_to '編輯', edit_event_path(@event) %> |
+<%= link_to '回到首頁', events_path %>
