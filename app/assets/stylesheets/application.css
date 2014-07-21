@@ -35,3 +35,7 @@ a {
 .admin:hover .delete {
 	opacity: 1;
 }
+
+.nested_form {
+	width: 40%;
+}
